@@ -2,10 +2,10 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
-import User from "./models/user-model.js";
+import User from "../models/user-model.js";
 import jwt from "jsonwebtoken";
-import Habit from "./models/Habitmodel.js";
-import sendMail from "./utils/mailSender.js";
+import Habit from "../models/Habitmodel.js";
+import sendMail from "../utils/mailSender.js";
 
 const app = express();
 
@@ -21,7 +21,7 @@ mongoose
   .then(() => console.log("MongoDB connected successfully"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-app.use("/", () => {
+app.get("/", (req, res) => {
   console.log("server is running");
 });
 
