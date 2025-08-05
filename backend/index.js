@@ -21,6 +21,10 @@ mongoose
   .then(() => console.log("MongoDB connected successfully"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
+app.use("/", () => {
+  console.log("server is running");
+});
+
 app.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
