@@ -14,7 +14,9 @@ const HabitList = () => {
     console.log("Delete habit with ID:", id);
     event.stopPropagation();
     try {
-      const response = await axios.delete(`http://localhost:3000/habit/${id}`);
+      const response = await axios.delete(
+        `https://vercel-deployment-mu-ashen.vercel.app/habit/${id}`
+      );
       console.log(response.data);
       toast.success("Habit deleted Successfully");
       setHabits((prev) => prev.filter((habit) => habit._id !== id));
@@ -26,7 +28,9 @@ const HabitList = () => {
   useEffect(() => {
     const fetchHabitsFirst = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/${userId}`);
+        const res = await axios.get(
+          `https://vercel-deployment-mu-ashen.vercel.app/${userId}`
+        );
         setHabits(res.data);
       } catch (err) {
         console.error("Error fetching habits:", err);
@@ -40,7 +44,9 @@ const HabitList = () => {
 
   const fetchHabitsFirst = async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/${userId}`);
+      const res = await axios.get(
+        `https://vercel-deployment-mu-ashen.vercel.app/${userId}`
+      );
       setHabits(res.data);
     } catch (err) {
       console.error("Error fetching habits:", err);
@@ -49,7 +55,9 @@ const HabitList = () => {
 
   const fetchHabits = async (category) => {
     try {
-      let res = await axios.get(`http://localhost:3000/${userId}/${category}`);
+      let res = await axios.get(
+        `https://vercel-deployment-mu-ashen.vercel.app/${userId}/${category}`
+      );
       setHabits(res.data);
     } catch (err) {
       console.error("Error fetching habits:", err.message);
@@ -61,7 +69,9 @@ const HabitList = () => {
     e.stopPropagation();
     try {
       console.log(id);
-      const response = await axios.put(`http://localhost:3000/${id}/complete`);
+      const response = await axios.put(
+        `https://vercel-deployment-mu-ashen.vercel.app/${id}/complete`
+      );
       setHabits([response.data]);
     } catch (error) {
       toast.error(error.response.data.message);

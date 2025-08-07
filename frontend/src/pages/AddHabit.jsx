@@ -11,13 +11,16 @@ function AddHabit() {
     const userId = localStorage.getItem("userId");
 
     try {
-      const response = await axios.post("http://localhost:3000/habit", {
-        name: data.habit,
-        description: data.description,
-        frequency: data.frequency,
-        category: data.category,
-        user: userId,
-      });
+      const response = await axios.post(
+        "https://vercel-deployment-mu-ashen.vercel.app/habit",
+        {
+          name: data.habit,
+          description: data.description,
+          frequency: data.frequency,
+          category: data.category,
+          user: userId,
+        }
+      );
       reset();
       console.log(response);
 

@@ -48,6 +48,7 @@ const Signin = () => {
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme.mode);
 
+  // https://vercel-deployment-mu-ashen.vercel.app/
   const {
     register,
     handleSubmit,
@@ -59,11 +60,14 @@ const Signin = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post("http://localhost:3000/signin", {
-        username: data.username,
-        email: data.email,
-        password: data.password,
-      });
+      const response = await axios.post(
+        "https://vercel-deployment-mu-ashen.vercel.app/signin",
+        {
+          username: data.username,
+          email: data.email,
+          password: data.password,
+        }
+      );
 
       const d = response.data;
 
