@@ -39,7 +39,7 @@ function LoginPage() {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        "https://vercel-deployment-mu-ashen.vercel.app/login",
+        "https://vercel-deployment-mu-ashen.vercel.app/api/login",
         data
       );
       const d = await response.data;
