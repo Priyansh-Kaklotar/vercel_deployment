@@ -2,10 +2,11 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
-import User from "../models/user-model.js";
+
 import jwt from "jsonwebtoken";
-import Habit from "../models/Habitmodel.js";
-import sendMail from "../utils/mailSender.js";
+import Habit from "./models/Habitmodel.js";
+import sendMail from "./utils/mailSender.js";
+import User from "./models/user-model.js";
 
 const app = express();
 app.use(
@@ -84,34 +85,10 @@ app.post("/signin", async (req, res) => {
   }
 });
 
-// app.post("/signin", async (req, res) => {
-//   const { username, email, password } = req.body;
-//   try {
-//     const newUser = new User({ username, email, password });
-//     await newUser.save();
-//     const token = jwt.sign(
-//       {
-//         username,
-//         email,
-//       },
-//       JWT_SECRET,
-//       { expiresIn: "1h" }
-//     );
-//     res.json({ token, newUser });
-//     console.log("kaam thay gayu party");
-//     res.status(201).json({ message: "User saved successfully", user: newUser });
-//   } catch (error) {
-//     console.error("Error saving user:", error);
-//     res.status(404).json({ message: "Server error" });
-//   }
-// });
-
 app.post("/habit", async (req, res) => {
   console.log("request aavyi yeahh", req.body);
   const { name, description, frequency, user, category } = req.body;
-  // if (!mongoose.Types.ObjectId.isValid(user)) {
-  //   return res.status(400).json({ error: "Invalid user ID" });
-  // }
+
   try {
     const habit = new Habit({
       name,
