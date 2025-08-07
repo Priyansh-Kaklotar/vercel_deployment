@@ -11,7 +11,7 @@ import User from "../models/user-model.js";
 const app = express();
 app.use(
   cors({
-    origin: "https://vercel-deployment-client-seven.vercel.app/login", // replace with your actual frontend Vercel URL
+    origin: "https://vercel-deployment-client-seven.vercel.app", // replace with your actual frontend Vercel URL
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, // if you're using cookies or sessions
   })
