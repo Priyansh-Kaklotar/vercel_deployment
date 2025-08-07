@@ -4,9 +4,9 @@ import cors from "cors";
 import mongoose from "mongoose";
 
 import jwt from "jsonwebtoken";
-import Habit from "./models/Habitmodel.js";
-import sendMail from "./utils/mailSender.js";
-import User from "./models/user-model.js";
+import Habit from "../models/Habitmodel.js";
+import sendMail from "../utils/mailSender.js";
+import User from "../models/user-model.js";
 
 const app = express();
 app.use(
