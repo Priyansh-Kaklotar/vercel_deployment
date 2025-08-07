@@ -80,7 +80,7 @@ const Signin = () => {
       if (d.token) {
         localStorage.setItem("token", d.token);
         localStorage.setItem("username", d.username);
-        localStorage.setItem("userId", d._id);
+        localStorage.setItem("userId", d.user_id);
         toast.success("✅ Signin Successful");
         navigate("/dashboard");
       } else {
