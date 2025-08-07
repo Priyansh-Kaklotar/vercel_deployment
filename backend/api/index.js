@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
   res.send("server is running");
 });
 
-app.post("/login", async (req, res) => {
+app.post("/api/login", async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username }).select("+password");
@@ -59,7 +59,7 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.post("/signin", async (req, res) => {
+app.post("/api/signin", async (req, res) => {
   const { username, email, password } = req.body;
   try {
     const newUser = new User({ username, email, password });
@@ -85,7 +85,7 @@ app.post("/signin", async (req, res) => {
   }
 });
 
-app.post("/habit", async (req, res) => {
+app.post("/api/habit", async (req, res) => {
   console.log("request aavyi yeahh", req.body);
   const { name, description, frequency, user, category } = req.body;
 
@@ -111,7 +111,7 @@ app.post("/habit", async (req, res) => {
   }
 });
 
-app.get("/:userId", async (req, res) => {
+app.get("/api/:userId", async (req, res) => {
   try {
     const habits = await Habit.find({
       user: req.params.userId,
@@ -124,7 +124,7 @@ app.get("/:userId", async (req, res) => {
   }
 });
 
-app.get("/:userId/:category", async (req, res) => {
+app.get("/api/:userId/:category", async (req, res) => {
   const { category } = req.params;
 
   try {
@@ -140,7 +140,7 @@ app.get("/:userId/:category", async (req, res) => {
   }
 });
 
-app.delete("/habit/:id", async (req, res) => {
+app.delete("/api/habit/:id", async (req, res) => {
   const { id } = req.params;
   console.log(id);
   try {
@@ -151,7 +151,7 @@ app.delete("/habit/:id", async (req, res) => {
   }
 });
 
-app.put("/:id/complete", async (req, res) => {
+app.put("/api/:id/complete", async (req, res) => {
   const habit = await Habit.findById(req.params.id);
   console.log(habit);
   let time = 1;
