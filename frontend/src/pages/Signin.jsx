@@ -66,6 +66,12 @@ const Signin = () => {
           username: data.username,
           email: data.email,
           password: data.password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true, // if CORS credentials needed
         }
       );
 
