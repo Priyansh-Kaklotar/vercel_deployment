@@ -197,6 +197,6 @@ app.put("/api/:id/complete", async (req, res) => {
   res.json(habit);
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`server start at port ${process.env.PORT}`);
-});
+// app.listen(process.env.PORT, () => {
+//   console.log(`server start at port ${process.env.PORT}`);
+// });
