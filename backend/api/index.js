@@ -8,7 +8,13 @@ import Habit from "../models/Habitmodel.js";
 import sendMail from "../utils/mailSender.js";
 
 const app = express();
-
+app.use(
+  cors({
+    origin: "https://vercel-deployment-client-seven.vercel.app", // replace with your actual frontend Vercel URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // if you're using cookies or sessions
+  })
+);
 //must for every backend file
 dotenv.config();
 app.use(express.json());
