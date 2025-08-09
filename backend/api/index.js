@@ -10,11 +10,16 @@ import User from "../models/user-model.js";
 const app = express();
 
 app.use((req, res, next) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
+  const allowedOrigins = [
     "https://vercel-deployment-client-seven.vercel.app",
-    "https://vercel-gamified.vercel.app"
-  );
+    "https://vercel-gamified.vercel.app",
+  ];
+
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -25,6 +30,23 @@ app.use((req, res, next) => {
 
   next();
 });
+
+// app.use((req, res, next) => {
+//   res.setHeader(
+//     "Access-Control-Allow-Origin",
+//     "https://vercel-deployment-client-seven.vercel.app",
+//     "https://vercel-gamified.vercel.app"
+//   );
+//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+//   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+//   res.setHeader("Access-Control-Allow-Credentials", "true");
+
+//   if (req.method === "OPTIONS") {
+//     return res.status(200).end();
+//   }
+
+//   next();
+// });
 
 // app.use(
 //   cors({
