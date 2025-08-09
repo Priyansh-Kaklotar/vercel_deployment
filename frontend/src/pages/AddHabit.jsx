@@ -24,7 +24,6 @@ function AddHabit() {
       reset();
       console.log(response);
 
-      // toast.success("Habit Added Successfully");
       toast.success(
         <div>
           <strong>✅ Habit Added Successful</strong>
@@ -39,7 +38,6 @@ function AddHabit() {
           draggable: false,
           progress: undefined,
           theme: "light",
-          transition: Bounce,
         }
       );
     } catch (err) {

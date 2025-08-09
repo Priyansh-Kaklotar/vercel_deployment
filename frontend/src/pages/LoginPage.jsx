@@ -43,7 +43,6 @@ function LoginPage() {
         data
       );
       const d = response.data;
-      console.log("d = ", d);
       if (d.token) {
         localStorage.setItem("token", d.token);
         localStorage.setItem("username", data.username);
