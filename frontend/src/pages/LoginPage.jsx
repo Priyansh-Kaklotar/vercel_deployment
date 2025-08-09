@@ -40,8 +40,7 @@ function LoginPage() {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        // "https://vercel-deployment-mu-ashen.vercel.app/api/login",
-        `https://vercel-gamified.vercel.app/api/login`,
+        "https://vercel-deployment-mu-ashen.vercel.app/api/login",
         {
           username: data.username,
           password: data.password,
@@ -49,7 +48,7 @@ function LoginPage() {
         { withCredentials: true }
       );
       const d = response.data;
-
+      console.log("d = ", d);
       if (d.token) {
         localStorage.setItem("token", d.token);
         localStorage.setItem("username", data.username);

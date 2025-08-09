@@ -61,8 +61,7 @@ const Signin = () => {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        // "https://vercel-deployment-mu-ashen.vercel.app/api/signin",
-        `https://vercel-gamified.vercel.app/api/signin`,
+        "https://vercel-deployment-mu-ashen.vercel.app/api/signin",
         {
           username: data.username,
           email: data.email,
