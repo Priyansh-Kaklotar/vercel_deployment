@@ -7,7 +7,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import { motion } from "framer-motion";
-import { password } from "bun";
 
 const schema = yup.object().shape({
   username: yup
