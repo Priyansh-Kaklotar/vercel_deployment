@@ -12,7 +12,7 @@ function AddHabit() {
 
     try {
       const response = await axios.post(
-        "https://vercel-gamified.vercel.app/api/habit",
+        "https://vercel-deployment-mu-ashen.vercel.app/api/habit",
         {
           name: data.habit,
           description: data.description,
