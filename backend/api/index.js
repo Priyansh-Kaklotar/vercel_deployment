@@ -8,11 +8,9 @@ import sendMail from "../utils/mailSender.js";
 import User from "../models/user-model.js";
 const app = express();
 
-import cors from "cors";
-
 const allowedOrigins = [
-  "https://vercel-deployment-client-seven.vercel.app",
   "https://vercel-gamified.vercel.app",
+  "https://vercel-deployment-client-seven.vercel.app",
 ];
 
 const corsOptions = {
@@ -22,26 +20,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-// export default function cors(req, res) {
-//   const allowedOrigins = [
-//     "https://vercel-deployment-client-seven.vercel.app",
-//     "https://vercel-gamified.vercel.app",
-//   ];
-//   const origin = req.headers.origin;
-//   if (allowedOrigins.includes(origin)) {
-//     res.setHeader("Access-Control-Allow-Origin", origin);
-//   }
-//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-//   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-//   res.setHeader("Access-Control-Allow-Credentials", "true");
-
-//   // Handle preflight request
-//   if (req.method === "OPTIONS") {
-//     res.status(200).end();
-//     return true; // indicate preflight handled
-//   }
-//   return false;
-// }
 
 // app.use((req, res, next) => {
 //   const allowedOrigins = [
