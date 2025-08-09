@@ -8,7 +8,7 @@ import sendMail from "../utils/mailSender.js";
 import User from "../models/user-model.js";
 const app = express();
 
-const allowedOrigins = ["https://vercel-deployment-client-seven.vercel.app"];
+const allowedOrigins = ["https://vercel-deployment-p22j.vercel.app/"];
 
 app.use((req, res, next) => {
   const origin = req.headers.origin;
