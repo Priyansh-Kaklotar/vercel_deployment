@@ -82,8 +82,8 @@ const Signin = () => {
         localStorage.setItem("username", d.username);
         localStorage.setItem("userId", d.newUser._id);
         console.log("userId", d.newUser._id);
-        toast.success("✅ Signin Successful");
-        toast.error(
+        // toast.success("✅ Signin Successful");
+        toast.success(
           <div>
             <strong>✅ Signin Successful</strong>
             <div className="text-sm">Check username or password</div>

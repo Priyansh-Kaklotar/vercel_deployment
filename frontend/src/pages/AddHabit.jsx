@@ -24,7 +24,24 @@ function AddHabit() {
       reset();
       console.log(response);
 
-      toast.success("Habit Added Successfully");
+      // toast.success("Habit Added Successfully");
+      toast.success(
+        <div>
+          <strong>✅ Habit Added Successful</strong>
+          <div className="text-sm">Check username or password</div>
+        </div>,
+        {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        }
+      );
     } catch (err) {
       console.log("error in add habit component");
       console.log(err.message);
