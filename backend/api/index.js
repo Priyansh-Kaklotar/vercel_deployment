@@ -8,70 +8,25 @@ import sendMail from "../utils/mailSender.js";
 import User from "../models/user-model.js";
 const app = express();
 
-// app.use(
-//   cors({
-//     origin: "https://vercel-deployment-client-seven.vercel.app",
-//   })
-// );
-
-// const allowedOrigins = [
-//   "https://vercel-gamified.vercel.app",
-//   "https://vercel-deployment-client-seven.vercel.app",
-// ];
-
-// const corsOptions = {
-//   origin: allowedOrigins,
-//   methods: ["GET", "POST", "PUT", "DELETE"],
-//   credentials: true,
-// };
-
-// app.use(cors(corsOptions));
-
-// app.use((req, res, next) => {
-//   const allowedOrigins = [
-//     "https://vercel-deployment-client-seven.vercel.app",
-//     "https://vercel-gamified.vercel.app",
-//   ];
-
-//   const origin = req.headers.origin;
-//   if (allowedOrigins.includes(origin)) {
-//     res.setHeader("Access-Control-Allow-Origin", origin);
-//   }
-
-//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-//   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-//   res.setHeader("Access-Control-Allow-Credentials", "true");
-
-//   if (req.method === "OPTIONS") {
-//     return res.status(200).end();
-//   }
-
-//   next();
-// });
+const allowedOrigins = ["https://vercel-deployment-client-seven.vercel.app"];
 
 app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
   res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://vercel-deployment-client-seven.vercel.app"
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS"
   );
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.setHeader("Access-Control-Allow-Credentials", "true");
 
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
-
   next();
 });
-
-// app.use(
-//   cors({
-//     origin: "https://vercel-deployment-client-seven.vercel.app", // replace with your actual frontend Vercel URL
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     credentials: true, // if you're using cookies or sessions
-//   })
-// );
 
 //must for every backend file
 dotenv.config();
