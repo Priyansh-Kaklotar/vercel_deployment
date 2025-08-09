@@ -49,30 +49,29 @@ const app = express();
 //   next();
 // });
 
-// app.use((req, res, next) => {
-//   res.setHeader(
-//     "Access-Control-Allow-Origin",
-//     // "https://vercel-deployment-client-seven.vercel.app",
-//     "https://vercel-gamified.vercel.app"
-//   );
-//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-//   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-//   res.setHeader("Access-Control-Allow-Credentials", "true");
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://vercel-deployment-client-seven.vercel.app"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
 
-//   if (req.method === "OPTIONS") {
-//     return res.status(200).end();
-//   }
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
 
-//   next();
-// });
+  next();
+});
 
-app.use(
-  cors({
-    origin: "https://vercel-deployment-client-seven.vercel.app", // replace with your actual frontend Vercel URL
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true, // if you're using cookies or sessions
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://vercel-deployment-client-seven.vercel.app", // replace with your actual frontend Vercel URL
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     credentials: true, // if you're using cookies or sessions
+//   })
+// );
 
 //must for every backend file
 dotenv.config();
