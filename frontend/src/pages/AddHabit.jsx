@@ -27,7 +27,6 @@ function AddHabit() {
       toast.success(
         <div>
           <strong>✅ Habit Added Successful</strong>
-          <div className="text-sm">Check username or password</div>
         </div>,
         {
           position: "top-right",
