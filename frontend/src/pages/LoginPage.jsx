@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import { motion } from "framer-motion";
+import { password } from "bun";
 
 const schema = yup.object().shape({
   username: yup
@@ -41,7 +42,10 @@ function LoginPage() {
       const response = await axios.post(
         // "https://vercel-deployment-mu-ashen.vercel.app/api/login",
         `https://vercel-gamified.vercel.app/api/login`,
-        data,
+        {
+          username: data.username,
+          password: data.password,
+        },
         { withCredentials: true }
       );
       const d = response.data;
