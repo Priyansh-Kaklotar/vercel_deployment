@@ -15,7 +15,7 @@ const HabitList = () => {
     event.stopPropagation();
     try {
       const response = await axios.delete(
-        `https://vercel-deployment-mu-ashen.vercel.app/api/habit/${id}`,
+        // `https://vercel-deployment-mu-ashen.vercel.app/api/habit/${id}`,
         `https://vercel-gamified.vercel.app/api/habit/${id}`
       );
       console.log(response.data);
@@ -30,7 +30,7 @@ const HabitList = () => {
     const fetchHabitsFirst = async () => {
       try {
         const res = await axios.get(
-          `https://vercel-deployment-mu-ashen.vercel.app/api/${userId}`,
+          // `https://vercel-deployment-mu-ashen.vercel.app/api/${userId}`,
           `https://vercel-gamified.vercel.app/api/${userId}`
         );
         setHabits(res.data);
@@ -47,7 +47,7 @@ const HabitList = () => {
   const fetchHabitsFirst = async () => {
     try {
       const res = await axios.get(
-        `https://vercel-deployment-mu-ashen.vercel.app/api/${userId}`,
+        // `https://vercel-deployment-mu-ashen.vercel.app/api/${userId}`,
         `https://vercel-gamified.vercel.app/api/${userId}`
       );
       setHabits(res.data);
@@ -59,7 +59,7 @@ const HabitList = () => {
   const fetchHabits = async (category) => {
     try {
       let res = await axios.get(
-        `https://vercel-deployment-mu-ashen.vercel.app/api/${userId}/${category}`,
+        // `https://vercel-deployment-mu-ashen.vercel.app/api/${userId}/${category}`,
         `https://vercel-gamified.vercel.app/api/${userId}/${category}`
       );
       setHabits(res.data);
@@ -74,7 +74,7 @@ const HabitList = () => {
     try {
       console.log(id);
       const response = await axios.put(
-        `https://vercel-deployment-mu-ashen.vercel.app/api/${id}/complete`,
+        // `https://vercel-deployment-mu-ashen.vercel.app/api/${id}/complete`,
         `https://vercel-gamified.vercel.app/api/${id}/complete`
       );
       setHabits([response.data]);
