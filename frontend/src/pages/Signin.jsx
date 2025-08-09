@@ -75,7 +75,7 @@ const Signin = () => {
         }
       );
 
-      const d = response.data;
+      const d = await response.data;
 
       if (d.token) {
         localStorage.setItem("token", d.token);
@@ -83,6 +83,23 @@ const Signin = () => {
         localStorage.setItem("userId", d.newUser._id);
         console.log("userId", d.newUser._id);
         toast.success("✅ Signin Successful");
+        toast.error(
+          <div>
+            <strong>✅ Signin Successful</strong>
+            <div className="text-sm">Check username or password</div>
+          </div>,
+          {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          }
+        );
         navigate("/dashboard");
       } else {
         console.log("Signin failed:", d.message);
