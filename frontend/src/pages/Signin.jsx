@@ -89,7 +89,7 @@ const Signin = () => {
       }
       reset();
     } catch (error) {
-      console.error("Signin Error:", error);
+      console.error("Signin Error:", error.message);
       toast.error("❌ Signup failed. Try again.");
     }
   };
