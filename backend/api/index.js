@@ -95,7 +95,7 @@ app.post("/api/signin", async (req, res) => {
       "Welcome to Gamified App 🎉",
       `Hi ${username},\n\nWelcome To Gamified  ! Let's level up your life! 🚀`
     );
-    res.json({ token, username });
+    res.json({ token, username, newUser });
   } catch (error) {
     console.error("Error saving user:", error);
     res.status(404).json({ message: "Server error" });
