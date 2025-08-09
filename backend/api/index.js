@@ -8,6 +8,27 @@ import sendMail from "../utils/mailSender.js";
 import User from "../models/user-model.js";
 const app = express();
 
+const allowedOrigins = [
+  "https://vercel-deployment-client-seven.vercel.app",
+  "https://vercel-gamified.vercel.app",
+];
+
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+
+  next();
+});
+
 // export default function cors(req, res) {
 //   const allowedOrigins = [
 //     "https://vercel-deployment-client-seven.vercel.app",
