@@ -8,18 +8,18 @@ import sendMail from "../utils/mailSender.js";
 import User from "../models/user-model.js";
 const app = express();
 
-const allowedOrigins = [
-  "https://vercel-gamified.vercel.app",
-  "https://vercel-deployment-client-seven.vercel.app",
-];
+// const allowedOrigins = [
+//   "https://vercel-gamified.vercel.app",
+//   "https://vercel-deployment-client-seven.vercel.app",
+// ];
 
-const corsOptions = {
-  origin: allowedOrigins,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
-};
+// const corsOptions = {
+//   origin: allowedOrigins,
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   credentials: true,
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // app.use((req, res, next) => {
 //   const allowedOrigins = [
@@ -43,22 +43,22 @@ app.use(cors(corsOptions));
 //   next();
 // });
 
-// app.use((req, res, next) => {
-//   res.setHeader(
-//     "Access-Control-Allow-Origin",
-//     "https://vercel-deployment-client-seven.vercel.app",
-//     "https://vercel-gamified.vercel.app"
-//   );
-//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-//   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-//   res.setHeader("Access-Control-Allow-Credentials", "true");
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    // "https://vercel-deployment-client-seven.vercel.app",
+    "https://vercel-gamified.vercel.app"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
 
-//   if (req.method === "OPTIONS") {
-//     return res.status(200).end();
-//   }
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
 
-//   next();
-// });
+  next();
+});
 
 // app.use(
 //   cors({
