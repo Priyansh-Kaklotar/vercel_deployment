@@ -8,27 +8,52 @@ import sendMail from "../utils/mailSender.js";
 import User from "../models/user-model.js";
 const app = express();
 
-app.use((req, res, next) => {
+
+
+
+export default function cors(req, res) {
   const allowedOrigins = [
     "https://vercel-deployment-client-seven.vercel.app",
     "https://vercel-gamified.vercel.app",
   ];
-
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   }
-
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.setHeader("Access-Control-Allow-Credentials", "true");
 
+  // Handle preflight request
   if (req.method === "OPTIONS") {
-    return res.status(200).end();
+    res.status(200).end();
+    return true; // indicate preflight handled
   }
+  return false;
+}
 
-  next();
-});
+
+// app.use((req, res, next) => {
+//   const allowedOrigins = [
+//     "https://vercel-deployment-client-seven.vercel.app",
+//     "https://vercel-gamified.vercel.app",
+//   ];
+
+//   const origin = req.headers.origin;
+//   if (allowedOrigins.includes(origin)) {
+//     res.setHeader("Access-Control-Allow-Origin", origin);
+//   }
+
+//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+//   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+//   res.setHeader("Access-Control-Allow-Credentials", "true");
+
+//   if (req.method === "OPTIONS") {
+//     return res.status(200).end();
+//   }
+
+//   next();
+// });
 
 // app.use((req, res, next) => {
 //   res.setHeader(
@@ -238,3 +263,6 @@ app.put("/:id/complete", async (req, res) => {
 // app.listen(process.env.PORT, () => {
 //   console.log(`server start at port ${process.env.PORT}`);
 // });
+export default function handler(req, res) {
+  return app(req, res); // Express app is a function (req,res)
+}
