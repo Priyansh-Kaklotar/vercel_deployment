@@ -95,7 +95,7 @@ app.get("/", (req, res) => {
   res.send("server is running");
 });
 
-app.post("/api/login", async (req, res) => {
+app.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username }).select("+password");
