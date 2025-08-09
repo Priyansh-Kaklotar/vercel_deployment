@@ -40,7 +40,9 @@ function LoginPage() {
     try {
       const response = await axios.post(
         // "https://vercel-deployment-mu-ashen.vercel.app/api/login",
-        `https://vercel-gamified.vercel.app/api/login`
+        `https://vercel-gamified.vercel.app/api/login`,
+        data,
+        { withCredentials: true }
       );
       const d = response.data;
 
