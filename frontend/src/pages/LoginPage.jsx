@@ -42,7 +42,7 @@ function LoginPage() {
         "https://vercel-deployment-mu-ashen.vercel.app/api/login",
         data
       );
-      const d = await response.data;
+      const d = response.data;
 
       if (d.token) {
         localStorage.setItem("token", d.token);

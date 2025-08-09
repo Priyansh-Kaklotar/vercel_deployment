@@ -2,7 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
-
 import jwt from "jsonwebtoken";
 import Habit from "../models/Habitmodel.js";
 import sendMail from "../utils/mailSender.js";
@@ -59,7 +58,6 @@ app.use((req, res, next) => {
 //must for every backend file
 dotenv.config();
 app.use(express.json());
-// app.use(cors());
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -99,7 +97,7 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
-app.post("/api/signin", async (req, res) => {
+app.post("/signin", async (req, res) => {
   const { username, email, password } = req.body;
   try {
     const newUser = new User({ username, email, password });
@@ -125,7 +123,7 @@ app.post("/api/signin", async (req, res) => {
   }
 });
 
-app.post("/api/habit", async (req, res) => {
+app.post("/habit", async (req, res) => {
   console.log("request aavyi yeahh", req.body);
   const { name, description, frequency, user, category } = req.body;
 
@@ -151,7 +149,7 @@ app.post("/api/habit", async (req, res) => {
   }
 });
 
-app.get("/api/:userId", async (req, res) => {
+app.get("/:userId", async (req, res) => {
   try {
     const habits = await Habit.find({
       user: req.params.userId,
@@ -164,7 +162,7 @@ app.get("/api/:userId", async (req, res) => {
   }
 });
 
-app.get("/api/:userId/:category", async (req, res) => {
+app.get("/:userId/:category", async (req, res) => {
   const { category } = req.params;
 
   try {
@@ -180,7 +178,7 @@ app.get("/api/:userId/:category", async (req, res) => {
   }
 });
 
-app.delete("/api/habit/:id", async (req, res) => {
+app.delete("/habit/:id", async (req, res) => {
   const { id } = req.params;
   console.log(id);
   try {
@@ -191,7 +189,7 @@ app.delete("/api/habit/:id", async (req, res) => {
   }
 });
 
-app.put("/api/:id/complete", async (req, res) => {
+app.put("/:id/complete", async (req, res) => {
   const habit = await Habit.findById(req.params.id);
   console.log(habit);
   let time = 1;
@@ -237,6 +235,6 @@ app.put("/api/:id/complete", async (req, res) => {
   res.json(habit);
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`server start at port ${process.env.PORT}`);
-});
+// app.listen(process.env.PORT, () => {
+//   console.log(`server start at port ${process.env.PORT}`);
+// });
