@@ -81,7 +81,7 @@ const Signin = () => {
         localStorage.setItem("token", d.token);
         localStorage.setItem("username", d.username);
         localStorage.setItem("userId", d.user_id);
-        console.log("userId", d.user_id);
+        console.log("userId", d);
         toast.success("✅ Signin Successful");
         navigate("/dashboard");
       } else {
