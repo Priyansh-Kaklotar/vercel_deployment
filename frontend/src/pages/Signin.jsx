@@ -70,8 +70,7 @@ const Signin = () => {
         {
           headers: {
             "Content-Type": "application/json",
-          },
-          withCredentials: true, // if CORS credentials needed
+          }, // if CORS credentials needed
         }
       );
 
